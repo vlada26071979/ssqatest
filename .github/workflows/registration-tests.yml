@@ -23,4 +23,4 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run tests
-      run: PYTHONPATH=src:src/ssqatest pytest tests/ -v
+      run: PYTHONPATH=src pytest tests/ -v
