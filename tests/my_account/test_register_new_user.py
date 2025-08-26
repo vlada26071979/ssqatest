@@ -43,7 +43,7 @@ class TestRegisterNewUser:
         my_account_page.click_register_button()
 
         my_account_page.wait_until_user_already_registered_error_is_displayed(expected_error_message)
-        time.sleep(5)
+
 
     @pytest.mark.tcid15
     def test_demo(self):
