@@ -25,6 +25,5 @@ jobs:
 
       - name: Run Registration Test Class
         run: |
-          # Add src folder in PYTHONPATH so that Python can find modules
-          export PYTHONPATH=$PYTHONPATH:$(pwd)/ssqatest/src
-          pytest tests/my_account/test_register_new_user.py::TestRegisterNewUser -v
+          # Added src folder in PYTHONPATH so that python can find needed modules
+          PYTHONPATH=src python -m pytest tests/my_account/test_register_new_user.py::TestRegisterNewUser -v
