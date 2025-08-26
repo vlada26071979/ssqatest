@@ -1,0 +1,10 @@
+{
+  "valid_user": {
+    "email": "vlada2079@example.com",
+    "password": "partizan2025!"
+  },
+  "existing_user": {
+    "email": "vlada79@example.com",
+    "password": "partizan2025!"
+  }
+}
