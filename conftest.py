@@ -1,28 +1,25 @@
-import pytest
-from selenium import webdriver
 import os
-
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+import pytest
 
 @pytest.fixture(scope="class")
 def init_driver(request):
-    # supported_browsers = ["chrome", "firefox"]
-    #
-    # browser = os.environ.get("BROWSER")
-    #
-    # if not browser:
-    #     raise Exception("The environment variable 'BROWSER' must be set")
-    #
-    # browser = browser.lower()
-    # if browser not in supported_browsers:
-    #     raise Exception(f"Browser {browser} is not one of supported."
-    #                     f"Supported are: {supported_browsers}")
-    # if browser == "chrome":
-    #     driver = webdriver.Chrome()
-    #     driver.maximize_window()
-    # elif browser == "firefox":
-    #     driver = webdriver.Firefox()
-    driver = webdriver.Chrome()
+    chrome_options = Options()
 
-    request.cls.driver = driver  # setting driver to a class variable
-    yield
+    run_local = os.environ.get("GITHUB_ACTIONS", "false").lower() != "true"
+
+    if not run_local:
+        # Headless mode za CI
+        chrome_options.add_argument("--headless=new")
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--disable-dev-shm-usage")
+
+    driver = webdriver.Chrome(options=chrome_options)
+    if run_local:
+        driver.maximize_window()
+
+    request.cls.driver = driver
+    yield driver
     driver.quit()
