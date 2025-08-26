@@ -9,7 +9,7 @@ class SeleniumExtended:
         self.driver = driver
         self.default_wait_secs = 10
 
-    def _wait(self, wait_secs=10):
+    def _wait(self, wait_secs=30):
         return WebDriverWait(self.driver, wait_secs)
 
     # def wait_and_enter_text(self, locator, text, wait_secs=None):

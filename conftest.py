@@ -6,17 +6,19 @@ import pytest
 
 @pytest.fixture(scope="class")
 def init_driver(request):
-    chrome_options = Options()
+    options = Options()
 
     run_local = os.environ.get("GITHUB_ACTIONS", "false").lower() != "true"
 
     if not run_local:
         # Headless mode za CI
-        chrome_options.add_argument("--headless=new")
-        chrome_options.add_argument("--no-sandbox")
-        chrome_options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--headless=new")  # headless mod
+        options.add_argument("--disable-gpu")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--window-size=1920,1080")
+        options.add_argument("--disable-dev-shm-usage")
 
-    driver = webdriver.Chrome(options=chrome_options)
+    driver = webdriver.Chrome(options=options)
     if run_local:
         driver.maximize_window()
 
