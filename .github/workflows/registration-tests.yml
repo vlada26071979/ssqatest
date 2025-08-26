@@ -22,10 +22,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+
+      - name: Create ssqatest package folder
+        run: |
+          mkdir ssqatest
+          mv src tests ssqatest/
+
       - name: Run tests
-        working-directory: ssqatest
         env:
-          PYTHONPATH: ${{ github.workspace }}/ssqatest
-        run: pytest tests/ -v
-
-
+          PYTHONPATH: ${{ github.workspace }}
+        run: pytest ssqatest/tests/ -v

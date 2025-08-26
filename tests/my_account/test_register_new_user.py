@@ -3,6 +3,7 @@ import pytest
 from selenium.webdriver.common.by import By
 
 from ssqatest.src.pages.MyAccountSignedOut import MyAccountSignedOut
+
 from ssqatest.src.pages.MyAccountSignedIn import MyAccountSignedIn
 from ssqatest.src.helpers.assertions import Ensure
 from ssqatest.src.helpers.config_helpers import get_base_url
