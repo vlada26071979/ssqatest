@@ -1,11 +1,12 @@
-name: Run Registration Tests
+name: Registration Tests
 
 on:
   workflow_dispatch:
   schedule:
     - cron: "0 9 * * *"
+
 jobs:
-  tests:
+  run-registration-tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,6 +23,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run TestRegisterNewUser test class
+      - name: Run Registration Test Class
         run: |
+          # Add src folder in PYTHONPATH so that Python can find modules
+          export PYTHONPATH=$PYTHONPATH:$(pwd)/ssqatest/src
           pytest tests/my_account/test_register_new_user.py::TestRegisterNewUser -v
