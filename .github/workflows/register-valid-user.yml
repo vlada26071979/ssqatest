@@ -1,9 +1,9 @@
-name: Verify you can not register existing user
+name: Verify you can register new user
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 9 * * *'
+    - cron: '0 10 * * *'
 
 jobs:
   run-tests:
@@ -29,7 +29,7 @@ jobs:
         mkdir -p test_reports/screenshots
         TIMESTAMP=$(date +'%Y-%m-%d_%H-%M-%S')
         REPORT_NAME="report_${TIMESTAMP}.html"
-        pytest -v -m tcid14 --html="test_reports/$REPORT_NAME" --self-contained-html
+        pytest -v -m tcid13 --html="test_reports/$REPORT_NAME" --self-contained-html
         echo "REPORT_NAME=$REPORT_NAME" >> $GITHUB_ENV
 
     - name: Upload HTML report

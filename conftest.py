@@ -3,7 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 import pytest
-import pytest_html
+from datetime import datetime
 
 
 @pytest.fixture(scope="class")
@@ -30,16 +30,18 @@ def init_driver(request):
 
 
 
-@pytest.hookimpl(hookwrapper=True)
+
+@pytest.hookimpl(tryfirst=True, hookwrapper=True)
 def pytest_runtest_makereport(item, call):
     outcome = yield
-    report = outcome.get_result()
-    extras = getattr(report, "extras", [])
-    if report.when == "call":
-        # always add url to report
-        extras.append(pytest_html.extras.url("http://www.example.com/"))
-        xfail = hasattr(report, "wasxfail")
-        if (report.skipped and xfail) or (report.failed and not xfail):
-            # only add additional html on failure
-            extras.append(pytest_html.extras.html("<div>Additional HTML</div>"))
-        report.extras = extras
+    rep = outcome.get_result()
+    if rep.when == "call" and rep.failed:
+        driver = item.funcargs.get("init_driver")  # ili kako se tvoj driver zove
+        if driver:
+            screenshots_dir = os.path.join(os.getcwd(), "test_reports", "screenshots")
+            os.makedirs(screenshots_dir, exist_ok=True)
+            timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+            file_name = f"{item.name}_{timestamp}.png"
+            driver.save_screenshot(os.path.join(screenshots_dir, file_name))
+            print(f"\nScreenshot saved to {file_name}")
+
