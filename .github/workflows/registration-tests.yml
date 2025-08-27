@@ -23,7 +23,18 @@ jobs:
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-    - name: Run test
+    - name: Run test and generate HTML report
       run: |
         export PYTHONPATH=$PWD/src
-        python -m pytest -v -m tcid14
+        mkdir -p test_reports
+        TIMESTAMP=$(date +'%Y-%m-%d_%H-%M-%S')
+        REPORT_NAME="report_${TIMESTAMP}.html"
+        pytest -v -m tcid14 --html="test_reports/$REPORT_NAME" --self-contained-html
+        echo "REPORT_NAME=$REPORT_NAME" >> $GITHUB_ENV
+
+    - name: Upload HTML report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: pytest-report
+        path: test_reports/${{ env.REPORT_NAME }}
