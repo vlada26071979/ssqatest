@@ -1,12 +1,9 @@
-name: Run Python Selenium Test
+name: Verify you can not register existing user
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch:
+  schedule:
+    - cron: '0 9 * * *'
 
 jobs:
   run-tests:

@@ -4,6 +4,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 import pytest
 
+
 @pytest.fixture(scope="class")
 def init_driver(request):
     options = Options()
@@ -11,7 +12,7 @@ def init_driver(request):
     run_local = os.environ.get("GITHUB_ACTIONS", "false").lower() != "true"
 
     if not run_local:
-        # Headless mode za CI
+        # Headless mode for GITHUB ACTIONS
         options.add_argument("--headless=new")  # headless mod
         options.add_argument("--disable-gpu")
         options.add_argument("--no-sandbox")
