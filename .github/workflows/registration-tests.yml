@@ -23,7 +23,7 @@ jobs:
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-    - name: Run only tcid14 test
+    - name: Run test
       run: |
         export PYTHONPATH=$PWD/src
         python -m pytest -v -m tcid14
