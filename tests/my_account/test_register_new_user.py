@@ -8,6 +8,7 @@ from ssqatest.src.pages.MyAccountSignedIn import MyAccountSignedIn
 from ssqatest.src.helpers.assertions import Ensure
 from ssqatest.src.helpers.config_helpers import get_base_url
 from ssqatest.src.helpers.data_helpers import load_test_data
+from ssqatest.src.helpers.generic_helpers import generate_random_email_and_password
 from ssqatest.src.SeleniumExtended import SeleniumExtended
 from ssqatest.src.pages.locators.MyAccountSignedOutLocators import MyAccountSignedOutLocators
 
@@ -17,15 +18,14 @@ class TestRegisterNewUser:
 
     @pytest.mark.tcid13
     def test_register_valid_user(self):
-        users = load_test_data("users.json")
-        valid_user = users["valid_user"]
+        email, password = generate_random_email_and_password()
 
         my_account_page = MyAccountSignedOut(self.driver)
         my_acc_signed_in_page = MyAccountSignedIn(self.driver)
 
         my_account_page.go_to_my_account_page()
-        my_account_page.enter_registration_email(valid_user["email"])
-        my_account_page.enter_registration_password(valid_user["password"])
+        my_account_page.enter_registration_email(email)
+        my_account_page.enter_registration_password(password)
         my_account_page.click_register_button()
         my_acc_signed_in_page.wait_until_logout_link_is_displayed()
 
