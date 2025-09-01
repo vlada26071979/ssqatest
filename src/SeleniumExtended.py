@@ -12,26 +12,14 @@ class SeleniumExtended:
     def _wait(self, wait_secs=20):
         return WebDriverWait(self.driver, wait_secs)
 
-    # def wait_and_enter_text(self, locator, text, wait_secs=None):
-    #     wait_secs = wait_secs if wait_secs else self.default_wait_secs
-    #     WebDriverWait(self.driver, wait_secs).until(EC.visibility_of_element_located(locator)).send_keys(text)
-
     def wait_and_enter_text(self, locator, text):
         self._wait().until(EC.visibility_of_element_located(locator)).send_keys(text)
-
-    # def wait_and_click(self, locator, wait_secs=None):
-    #     wait_secs = wait_secs if wait_secs else self.default_wait_secs
-    #     WebDriverWait(self.driver, wait_secs).until(EC.visibility_of_element_located(locator)).click()
 
     def wait_and_click(self, locator):
         self._wait().until(EC.visibility_of_element_located(locator)).click()
 
     def click_once_is_clickable(self, locator):
         self._wait().until(EC.element_to_be_clickable(locator)).click()
-
-    # def wait_until_element_contains_text(self, locator, text, wait_secs=None):
-    #     wait_secs = wait_secs if wait_secs else self.default_wait_secs
-    #     WebDriverWait(self.driver, wait_secs).until(EC.text_to_be_present_in_element(locator, text))
 
     def wait_until_element_contains_text(self, locator, text, wait_secs=None):
         self._wait().until(EC.text_to_be_present_in_element(locator, text))
