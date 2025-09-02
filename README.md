@@ -17,8 +17,9 @@ The goal of this framework is to practice test automation concepts and to have a
 ## Installation
 
 Clone the repository:
-
+```bash
 git clone https://github.com/vlada26071979/ssqatest.git
 cd ssqatest
+
 pip install -r requirements.txt
 
