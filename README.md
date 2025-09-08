@@ -9,6 +9,7 @@ The goal of this framework is to practice test automation concepts and to have a
 - Built with **Python 3** and **Selenium WebDriver**
 - Uses **pytest** as the test runner
 - Page Object Model (POM) design pattern
+- API test support using **Python requests** module
 - Automatic screenshot capture on test failure
 - Easy to integrate with **GitHub Actions** for CI/CD
 
