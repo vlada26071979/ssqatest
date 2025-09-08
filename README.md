@@ -1,7 +1,8 @@
 # Python Selenium Test Automation Framework
 
 This is a personal project where I am building a custom test automation framework using **Python**, **Selenium**, and **pytest**.  
-The goal of this framework is to practice test automation concepts and to have a base structure for UI test automation projects.
+The goal of this framework is to practice test automation concepts and to have a base structure for UI test automation projects 
+as well as for backend testing.
 
 ---
 
