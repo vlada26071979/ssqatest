@@ -1,0 +1,47 @@
+name: Verify you can not register existing user
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 9 * * *'
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    - name: Run test and generate HTML report
+      run: |
+        export PYTHONPATH=$PWD/src
+        mkdir -p test_reports/screenshots
+        TIMESTAMP=$(date +'%Y-%m-%d_%H-%M-%S')
+        REPORT_NAME="report_${TIMESTAMP}.html"
+        pytest -v -m tcid33 --html="test_reports/$REPORT_NAME" --self-contained-html
+        echo "REPORT_NAME=$REPORT_NAME" >> $GITHUB_ENV
+
+    - name: Upload HTML report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: pytest-report
+        path: test_reports/${{ env.REPORT_NAME }}
+
+    - name: Upload screenshots
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: screenshots
+        path: test_reports/screenshots/

@@ -1,11 +1,9 @@
 import pytest
 
-
 from ssqatest.src.pages.MyAccountSignedOut import MyAccountSignedOut
 from ssqatest.src.pages.MyAccountSignedIn import MyAccountSignedIn
 from ssqatest.src.helpers.data_helpers import load_test_data
 from ssqatest.src.helpers.generic_helpers import generate_random_email_and_password
-
 
 
 @pytest.mark.usefixtures("init_driver")
@@ -38,5 +36,3 @@ class TestRegisterNewUser:
         my_account_page_signed_out.click_register_button()
 
         my_account_page_signed_out.wait_until_user_already_registered_error_is_displayed(expected_error_message)
-
-
