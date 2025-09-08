@@ -1,9 +1,9 @@
-name: Verify you can not register existing user
+name: Verify guest user is able to buy a product
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 9 * * *'
+    - cron: '0 11 * * *'
 
 jobs:
   run-tests:
