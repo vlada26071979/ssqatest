@@ -11,6 +11,9 @@ from ssqatest.src.helpers.assertions import Ensure
 BASE_URL = "https://ifeaniemeghara17.atlassian.net"
 ensure = Ensure()
 
+# auth = HTTPBasicAuth("ifeani.emeghara17@gmail.com",
+#                      "ATATT3xFfGF0NaFo5A_YWigsxj7Y6-QjulUm78epmCjHGvonWEdk02f6wAs7To7rLReC44j5U4hTyUySd4thCCgX04NrSsn2F6ISb1RHLIZpwY8e3WXpwRQOdVIQjE3Y_skm35_kaxCVSdvRmAtiEqgdlh77pQq2-Cj7dSM2fFGsNJ3t5wPJpgY=AD6A173B")
+
 headers = {
     "Accept": "application/json"
 }
