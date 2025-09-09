@@ -12,14 +12,9 @@ from dotenv import load_dotenv
 
 BASE_URL = "https://ifeaniemeghara17.atlassian.net"
 ensure = Ensure()
-load_dotenv()
 
-jira_user = os.getenv("JIRA_USER")
-jira_token = os.getenv("JIRA_TOKEN")
-
-auth = HTTPBasicAuth(jira_user, jira_token)
-
-
+# auth = HTTPBasicAuth("ifeani.emeghara17@gmail.com",
+#                      "ATATT3xFfGF0i6EfcAEPmKf7fgGmx5JHloYuvBX2_6mBzFIJq2FW1VR0e4gAG6QDKm9irLYwC5H0U_sKPSxKEMQNMG77-Z9L8hOKku_RZr4H_xPXAd8Joi7ABrXNliBWXGIEpB1p0jC-oqVBUCqTU80EWcMDVtSDmByHaA9gBkZFabPyA4ljxLk=97321050")
 headers = {
     "Accept": "application/json"
 }
