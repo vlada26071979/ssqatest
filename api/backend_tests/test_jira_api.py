@@ -1,15 +1,23 @@
 import os
 
+import dotenv
 import pytest
 import requests
 from requests.auth import HTTPBasicAuth
 import json
 from ssqatest.api.client import ApiClient
 from ssqatest.src.helpers.assertions import Ensure
+from dotenv import load_dotenv
 
 
 BASE_URL = "https://ifeaniemeghara17.atlassian.net"
 ensure = Ensure()
+load_dotenv()
+
+jira_user = os.getenv("JIRA_USER")
+jira_token = os.getenv("JIRA_TOKEN")
+
+auth = HTTPBasicAuth(jira_user, jira_token)
 
 headers = {
     "Accept": "application/json"
