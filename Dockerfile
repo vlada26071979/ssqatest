@@ -1,11 +1,11 @@
 # ==========================
-# Dockerfile za Selenium + pytest
+# Dockerfile for Selenium + pytest
 # ==========================
 
 FROM python:3.9-slim
 
 # ==========================
-# Instaliraj osnovne zavisnosti i Chrome dependencije
+# Install dependencies
 # ==========================
 RUN apt-get update && apt-get install -y \
     wget \
@@ -29,7 +29,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # ==========================
-# Instaliraj Google Chrome
+# Install Google Chrome
 # ==========================
 RUN wget -q -O /usr/share/keyrings/google-linux-signing-key.gpg https://dl.google.com/linux/linux_signing_key.pub \
     && echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-linux-signing-key.gpg] http://dl.google.com/linux/chrome/deb/ stable main" \
@@ -39,7 +39,7 @@ RUN wget -q -O /usr/share/keyrings/google-linux-signing-key.gpg https://dl.googl
     && rm -rf /var/lib/apt/lists/*
 
 # ==========================
-# Instaliraj ChromeDriver (Chrome for Testing)
+# Install ChromeDriver (Chrome for Testing)
 # ==========================
 RUN CHROMEDRIVER_VERSION=140.0.7339.82 && \
     wget -q "https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/${CHROMEDRIVER_VERSION}/linux64/chromedriver-linux64.zip" -O /tmp/chromedriver.zip && \
@@ -50,7 +50,7 @@ RUN CHROMEDRIVER_VERSION=140.0.7339.82 && \
 
 
 # ==========================
-# Kopiraj projekat i instaliraj Python zavisnosti
+# Copy project and install Python dependecies
 # ==========================
 WORKDIR /ssqatest
 COPY . /ssqatest/
@@ -61,11 +61,6 @@ RUN pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir -r requirements.txt
 
 # ==========================
-# Postavi PYTHONPATH
-# ==========================
-ENV PYTHONPATH=/app
-
-# ==========================
-# Pokreni pytest kada se kontejner startuje
+# Run tests when container is running
 # ==========================
 CMD ["pytest", "-v", "-s"]
