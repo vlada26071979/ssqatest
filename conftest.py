@@ -15,6 +15,8 @@ def init_driver(request):
 
     # Determine if it is local, Docker container or GitHub Actions run
     run_local = os.environ.get("GITHUB_ACTIONS", "false").lower() != "true"
+
+    # you must set environmental variable DOCKER_RUN=TRUE on your local machine in order to this works correctly
     docker_run = os.environ.get("DOCKER_RUN", "false").lower() != "true"
 
     if not run_local or docker_run:

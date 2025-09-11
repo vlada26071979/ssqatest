@@ -1,0 +1,48 @@
+name: Selenium Tests with HTML Report
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 8 * * *'  # svaki dan u 08:00 UTC
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Checkout repository
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # 2. Build Docker image
+    - name: Build Docker image
+      run: docker build -t ssqatest:latest .
+
+    # 3. Run tests in container and generate HTML report
+    - name: Run tests and generate HTML report
+      run: |
+        mkdir -p test_reports/screenshots
+        TIMESTAMP=$(date +'%Y-%m-%d_%H-%M-%S')
+        REPORT_NAME="report_${TIMESTAMP}.html"
+        docker run --rm \
+          -v ${{ github.workspace }}/test_reports:/ssqatest/test_reports \
+          -e PYTHONPATH=/ssqatest \
+          ssqatest:latest \
+          pytest -v --html="test_reports/$REPORT_NAME" --self-contained-html
+        echo "REPORT_NAME=$REPORT_NAME" >> $GITHUB_ENV
+
+    # 4. Upload HTML report
+    - name: Upload HTML report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: pytest-report
+        path: test_reports/${{ env.REPORT_NAME }}
+
+    # 5. Upload screenshots
+    - name: Upload screenshots
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: screenshots
+        path: test_reports/screenshots/
