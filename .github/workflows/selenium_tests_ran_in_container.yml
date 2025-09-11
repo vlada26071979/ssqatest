@@ -3,7 +3,7 @@ name: Selenium Tests with HTML Report
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 8 * * *'  # svaki dan u 08:00 UTC
+    - cron: '0 8 * * *'  # every day at 08:00 UTC
 
 jobs:
   run-tests:
