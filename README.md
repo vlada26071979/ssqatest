@@ -20,7 +20,7 @@ as well as for backend testing.
 ## Installation
 
 Clone the repository:
-```bash
+
 git clone https://github.com/vlada26071979/ssqatest.git
 cd ssqatest
 
@@ -32,12 +32,10 @@ pip install -r requirements.txt
 
 A GitHub Actions workflow named Selenium Tests in Container has been added to automatically run the tests inside a Docker containeron a daily basis.
 The workflow file is located at:
-
 .github/workflows/selenium_tests_ran_in_container.yml
 This allows tests to run directly on GitHub Actions, ensuring that the environment is consistent and that results are visible in the GitHub Actions interface
 
 ---
-
 
 ## Running Tests in Docker (Locally)
 
