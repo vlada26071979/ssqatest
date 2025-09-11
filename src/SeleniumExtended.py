@@ -155,9 +155,24 @@ class SeleniumExtended:
         return element_text
 
     def click_with_js(self, locator):
+        """
+         Click on an element using JavaScript.
+
+         :param locator: Locator tuple for the element
+         :return: None
+         :raises TimeoutException: If the element cannot be found within the specified timeout
+         """
+
         element = self.find_element(locator)
         self.driver.execute_script("return arguments[0].click();", element)
 
     def find_all_elements(self, locator):
+        """
+          Find and return all elements matching the given locator.
+
+          :param locator: Locator tuple for the elements
+          :return: List of WebElement objects
+          :raises TimeoutException: If no elements are visible within the specified timeout
+          """
         return self._wait().until(EC.visibility_of_all_elements_located(locator))
 
