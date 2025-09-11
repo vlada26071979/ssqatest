@@ -7,7 +7,6 @@ from ssqatest.src.pages.locators.MyAccountSignedOutLocators import MyAccountSign
 
 @pytest.mark.usefixtures("init_driver")
 class TestLoginNegative:
-    pass
 
     @pytest.mark.tcid12
     def test_login_non_existing_user(self):
@@ -22,9 +21,3 @@ class TestLoginNegative:
         # verify error message
         expected_error_message = "Unknown email address. Check again or try your username."
         my_account_page.wait_until_error_is_displayed(expected_error_message)
-
-
-
-        
-
-

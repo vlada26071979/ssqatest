@@ -157,3 +157,7 @@ class SeleniumExtended:
     def click_with_js(self, locator):
         element = self.find_element(locator)
         self.driver.execute_script("return arguments[0].click();", element)
+
+    def find_all_elements(self, locator):
+        return self._wait().until(EC.visibility_of_all_elements_located(locator))
+

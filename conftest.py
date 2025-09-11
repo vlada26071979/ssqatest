@@ -9,7 +9,7 @@ import pytest
 from datetime import datetime
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope="class")
 def init_driver(request):
     options = Options()
 

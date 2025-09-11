@@ -1,0 +1,33 @@
+import pytest
+from ssqatest.src.helpers.assertions import Ensure
+from ssqatest.src.pages.HomePage import HomePage
+
+
+@pytest.mark.usefixtures("init_driver")
+class TestHomePage:
+
+    @pytest.fixture(scope="class")
+    def setup(self, request):
+        request.cls.home_page = HomePage(request.cls.driver)
+        request.cls.home_page.go_to_home_page()
+
+    @pytest.mark.tcid01
+    def test_verify_number_of_products_displayed(self, setup):
+        expected_products_number = 16
+
+        # home_page = HomePage(self.driver)
+        # home_page.go_to_home_page()
+
+        actual_products = self.home_page.get_all_product_elements()
+        Ensure.is_equal(len(actual_products), expected_products_number, f"Unexpected number of products displayed, "
+                                                                        f"Expected '{expected_products_number}' "
+                                                                        f"but got '{len(actual_products)}")
+
+    @pytest.mark.tcid67
+    def test_verify_heading_is_displayed(self, setup):
+        expected_heading_text = "Shop"
+        actual_heading_text = self.home_page.get_displayed_heading()
+
+        Ensure.is_equal(actual_heading_text, expected_heading_text,
+                        f"Wrong header displayed?! - Expected: {expected_heading_text} but got {actual_heading_text}")
+
