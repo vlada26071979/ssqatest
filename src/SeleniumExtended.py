@@ -70,7 +70,7 @@ class SeleniumExtended:
         :return: WebElement once visible
         """
         element = self._wait().until(EC.visibility_of_element_located(locator))
-        print("Element is visible on the page")
+        print(f"Element {locator} is visible on the page")
         return element
 
     def is_element_visible(self, locator, timeout=None):

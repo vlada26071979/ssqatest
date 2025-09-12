@@ -1,3 +1,5 @@
+import time
+import logging as logger
 import pytest
 
 from ssqatest.src.pages.MyAccountSignedOut import MyAccountSignedOut
@@ -16,11 +18,20 @@ class TestRegisterNewUser:
         my_account_page_signed_out = MyAccountSignedOut(self.driver)
         my_acc_signed_in_page = MyAccountSignedIn(self.driver)
 
+        logger.info("Go to My account page")
         my_account_page_signed_out.go_to_my_account_page()
+
+        logger.info("Enter email")
         my_account_page_signed_out.enter_registration_email(email)
+        logger.info("Enter password")
         my_account_page_signed_out.enter_registration_password(password)
+        logger.info("Click register")
         my_account_page_signed_out.click_register_button()
+        logger.info("Verifying that user is logged in")
         my_acc_signed_in_page.wait_until_logout_link_is_displayed()
+
+        logger.info("Logging out..")
+        my_acc_signed_in_page.click_logout_link()
 
     @pytest.mark.tcid14
     def test_verify_you_can_not_register_existing_user(self):

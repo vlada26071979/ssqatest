@@ -1,6 +1,5 @@
 import os
 import tempfile
-import time
 
 from selenium import webdriver
 from selenium.common import SessionNotCreatedException
@@ -29,7 +28,7 @@ def init_driver(request):
         options.add_argument("--disable-background-networking")
         options.add_argument("--disable-background-timer-throttling")
 
-        user_data_dir = tempfile.mkdtemp()
+        user_data_dir = tempfile.mkdtemp()  # this was added to avoid 'Session not created' issue
         options.add_argument(f"--user-data-dir={user_data_dir}")
 
     driver = None
@@ -39,7 +38,7 @@ def init_driver(request):
             break
         except SessionNotCreatedException as e:
             print(f"[WARNING] Chrome couldn't start (attempt {attempt + 1}/3): {e}")
-            time.sleep(2)
+
     else:
         raise RuntimeError("Chrome WebDriver could not start after 3 attempts")
 
