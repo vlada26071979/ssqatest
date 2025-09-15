@@ -8,3 +8,4 @@ class HomePageLocators:
 
     PRODUCTS = (By.CSS_SELECTOR, "ul li.product")
     PAGE_HEADING = (By.CSS_SELECTOR, "h1.page-title")
+    HEADERS = (By.CSS_SELECTOR, "ul.nav-menu li")

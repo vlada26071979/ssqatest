@@ -328,7 +328,7 @@ div.media {
   </head>
   <body>
     <h1 id="title">my_report.html</h1>
-    <p>Report generated on 11-Sep-2025 at 14:41:02 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a>
+    <p>Report generated on 12-Sep-2025 at 11:29:03 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a>
         v4.1.1</p>
     <div id="environment-header">
       <h2>Environment</h2>
@@ -382,7 +382,7 @@ div.media {
         <h2>Summary</h2>
         <div class="additional-summary prefix">
         </div>
-        <p class="run-count">1 test took 00:00:09.</p>
+        <p class="run-count">1 test took 00:00:11.</p>
         <p class="filter">(Un)check the boxes to filter the results.</p>
         <div class="summary__reload">
           <div class="summary__reload__button hidden" onclick="location.reload()">
@@ -392,10 +392,10 @@ div.media {
         <div class="summary__spacer"></div>
         <div class="controls">
           <div class="filters">
-            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="failed" />
-            <span class="failed">1 Failed,</span>
-            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="passed" disabled/>
-            <span class="passed">0 Passed,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="failed" disabled/>
+            <span class="failed">0 Failed,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="passed" />
+            <span class="passed">1 Passed,</span>
             <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="skipped" disabled/>
             <span class="skipped">0 Skipped,</span>
             <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="xfailed" disabled/>
@@ -429,7 +429,7 @@ div.media {
     </table>
   </body>
   <footer>
-    <div id="data-container" data-jsonblob="{&#34;environment&#34;: {&#34;Python&#34;: &#34;3.10.4&#34;, &#34;Platform&#34;: &#34;Windows-10-10.0.26100-SP0&#34;, &#34;Packages&#34;: {&#34;pytest&#34;: &#34;8.3.4&#34;, &#34;pluggy&#34;: &#34;1.5.0&#34;}, &#34;Plugins&#34;: {&#34;html&#34;: &#34;4.1.1&#34;, &#34;metadata&#34;: &#34;3.1.1&#34;}}, &#34;tests&#34;: {&#34;tests/home_page/test_home_page.py::TestHomePage::test_verify_number_of_products_displayed&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Failed&#34;, &#34;testId&#34;: &#34;tests/home_page/test_home_page.py::TestHomePage::test_verify_number_of_products_displayed&#34;, &#34;duration&#34;: &#34;00:00:09&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Failed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;tests/home_page/test_home_page.py::TestHomePage::test_verify_number_of_products_displayed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:09&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;self = &amp;lt;test_home_page.TestHomePage object at 0x000001E104CC01F0&amp;gt;\n\n    @pytest.mark.tcid01\n    def test_verify_number_of_products_displayed(self):\n        expected_products_number = 15\n    \n        home_page = HomePage(self.driver)\n        home_page.go_to_home_page()\n    \n        actual_products = home_page.get_all_product_elements()\n&amp;gt;       Ensure.is_equal(len(actual_products), expected_products_number, f&amp;quot;Unexpected number of products displayed, &amp;quot;\n                                                                        f&amp;quot;Expected &amp;#x27;{expected_products_number}&amp;#x27;, &amp;quot;\n                                                                        f&amp;quot;but got &amp;#x27;{len(actual_products)}&amp;quot;)\n\ntests\\home_page\\test_home_page.py:17: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nactual = 16, expected = 15, message = &amp;quot;Unexpected number of products displayed, Expected &amp;#x27;15&amp;#x27;, but got &amp;#x27;16&amp;quot;\n\n    @staticmethod\n    def is_equal(actual, expected, message=None):\n&amp;gt;       assert actual == expected, message or f&amp;quot;Expected &amp;#x27;{expected}&amp;#x27;, but got &amp;#x27;{actual}&amp;#x27;&amp;quot;\nE       AssertionError: Unexpected number of products displayed, Expected &amp;#x27;15&amp;#x27;, but got &amp;#x27;16\n\nsrc\\helpers\\assertions.py:5: AssertionError\n&#34;}]}, &#34;renderCollapsed&#34;: [&#34;passed&#34;], &#34;initialSort&#34;: &#34;result&#34;, &#34;title&#34;: &#34;my_report.html&#34;}"></div>
+    <div id="data-container" data-jsonblob="{&#34;environment&#34;: {&#34;Python&#34;: &#34;3.10.4&#34;, &#34;Platform&#34;: &#34;Windows-10-10.0.26100-SP0&#34;, &#34;Packages&#34;: {&#34;pytest&#34;: &#34;8.3.4&#34;, &#34;pluggy&#34;: &#34;1.5.0&#34;}, &#34;Plugins&#34;: {&#34;html&#34;: &#34;4.1.1&#34;, &#34;metadata&#34;: &#34;3.1.1&#34;}}, &#34;tests&#34;: {&#34;tests/my_account/test_register_new_user.py::TestRegisterNewUser::test_register_valid_user&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;tests/my_account/test_register_new_user.py::TestRegisterNewUser::test_register_valid_user&#34;, &#34;duration&#34;: &#34;00:00:11&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;tests/my_account/test_register_new_user.py::TestRegisterNewUser::test_register_valid_user&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:11&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log call -------------------------------\nINFO     root:generic_helpers.py:17 Generated random email: testuserjcldzkzeim@partizan.com\nINFO     root:test_register_new_user.py:21 Go to My account page\nINFO     root:MyAccountSignedOut.py:17 Going to url: http://demostore.supersqa.com/my-account/\nINFO     root:test_register_new_user.py:24 Enter email\nINFO     root:test_register_new_user.py:26 Enter password\nINFO     root:test_register_new_user.py:28 Click register\nINFO     root:test_register_new_user.py:30 Verifying that user is logged in\nINFO     root:test_register_new_user.py:33 Logging out..\n\n&#34;}]}, &#34;renderCollapsed&#34;: [&#34;passed&#34;], &#34;initialSort&#34;: &#34;result&#34;, &#34;title&#34;: &#34;my_report.html&#34;}"></div>
     <script>
       (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 const { getCollapsedCategory, setCollapsedIds } = require('./storage.js')

@@ -26,3 +26,6 @@ class HomePage(HomePageLocators):
 
     def get_displayed_heading(self):
         return self.sl.wait_and_get_text(self.PAGE_HEADING)
+
+    def get_displayed_headers(self):
+        return self.sl.get_text_from_multiple_elements(self.HEADERS)

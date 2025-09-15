@@ -70,7 +70,7 @@ class SeleniumExtended:
         :return: WebElement once visible
         """
         element = self._wait().until(EC.visibility_of_element_located(locator))
-        print(f"Element {locator} is visible on the page")
+        print(f"Element with locator {locator} is visible on the page")
         return element
 
     def is_element_visible(self, locator, timeout=None):
@@ -175,4 +175,17 @@ class SeleniumExtended:
           :raises TimeoutException: If no elements are visible within the specified timeout
           """
         return self._wait().until(EC.visibility_of_all_elements_located(locator))
+
+    def get_text_from_multiple_elements(self, locator):
+        """
+            Retrieve the text content from all elements matching the given locator.
+
+            :param locator: Locator tuple for the elements
+            :return: List of strings containing the text of each located element
+            :raises TimeoutException: If no elements are visible within the specified timeout
+            """
+        elements = self.find_all_elements(locator)
+        headers = [element.text for element in elements]
+        return headers
+
 
