@@ -2,6 +2,7 @@ import datetime
 import time
 
 from selenium.common import TimeoutException, StaleElementReferenceException, UnexpectedAlertPresentException
+from selenium.webdriver import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.ui import Select
@@ -187,5 +188,8 @@ class SeleniumExtended:
         elements = self.find_all_elements(locator)
         headers = [element.text for element in elements]
         return headers
+
+    def mouse_click(self, locator):
+        ActionChains(self.driver).move_to_element(self.find_element(locator)).click().perform()
 
 

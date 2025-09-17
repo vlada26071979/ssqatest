@@ -24,8 +24,15 @@ class HomePage(HomePageLocators):
         all_products = self.sl.find_all_elements(self.PRODUCTS)
         return all_products
 
+    def get_all_product_name_elements(self):
+        all_names = self.sl.find_all_elements(self.PRODUCT_NAMES)
+        return all_names
+
     def get_displayed_heading(self):
         return self.sl.wait_and_get_text(self.PAGE_HEADING)
 
     def get_displayed_headers(self):
         return self.sl.get_text_from_multiple_elements(self.HEADERS)
+
+    def click_beanie(self):
+        self.sl.wait_and_click(self.BEANIE)
