@@ -190,6 +190,26 @@ class SeleniumExtended:
         return headers
 
     def mouse_click(self, locator):
+        """
+        Perform a mouse click action on the element specified by the locator.
+
+        :param locator: Locator tuple for the element to be clicked
+        :return: None
+        :raises TimeoutException: If the element is not visible within the specified timeout
+        """
+        self.wait_until_element_is_visible(locator)
         ActionChains(self.driver).move_to_element(self.find_element(locator)).click().perform()
+
+    def switch_to_new_window(self, new_window_index=1):
+        """
+        Switch the driver's focus to a new browser window.
+
+        :param new_window_index: Index of the new window in the list of available window handles (default is 1)
+        :return: None
+        :raises IndexError: If the specified window index does not exist
+        """
+        all_windows = self.driver.window_handles
+        self.driver.switch_to.window(all_windows[new_window_index])
+
 
 

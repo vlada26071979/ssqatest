@@ -59,4 +59,10 @@ class TestHomePage:
 
         Ensure.is_equal(actual_displayed_names, expected_displayed_names)
 
+    @pytest.mark.tcid300
+    def test_mouse_click(self,setup):
+        self.home_page.click_beanie()
+        breakpoint()
+
+
 
