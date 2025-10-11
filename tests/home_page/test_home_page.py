@@ -1,4 +1,6 @@
 import pytest
+import logging as logger
+
 from ssqatest.src.helpers.assertions import Ensure
 from ssqatest.src.pages.HomePage import HomePage
 from ssqatest.src.pages.ProductPage import ProductPage
@@ -59,10 +61,7 @@ class TestHomePage:
 
         Ensure.is_equal(actual_displayed_names, expected_displayed_names)
 
-    @pytest.mark.tcid300
-    def test_mouse_click(self,setup):
-        self.home_page.click_beanie()
-        breakpoint()
+
 
 
 

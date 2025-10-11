@@ -2,7 +2,7 @@ import datetime
 import time
 
 from selenium.common import TimeoutException, StaleElementReferenceException, UnexpectedAlertPresentException
-from selenium.webdriver import ActionChains
+from selenium.webdriver import ActionChains, Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.ui import Select
@@ -37,6 +37,9 @@ class SeleniumExtended:
         """
         self._wait().until(EC.visibility_of_element_located(locator)).send_keys(text)
 
+    def wait_and_click_key(self,locator,key):
+        self._wait().until(EC.visibility_of_element_located(locator)).send_keys(key)
+
     def wait_and_click(self, locator):
         """
         Wait until the element is visible and click on it.
@@ -44,6 +47,21 @@ class SeleniumExtended:
         :param locator: Locator tuple for the element
         """
         self._wait().until(EC.visibility_of_element_located(locator)).click()
+
+    def wait_and_clear_input_field(self, locator):
+        """
+        Wait until the input element is visible and delete value that it holds .
+
+        :param locator: Locator tuple for the element
+        """
+        element = self.wait_until_element_is_visible(locator)
+        element.send_keys(Keys.CONTROL + "a")
+        element.send_keys(Keys.DELETE)
+
+    def enter_text_and_select_dropdown_suggestion(self, locator, text, suggested_element_locator):
+        self.wait_and_enter_text(locator, text)
+        dropdown_sugesstion = self.find_element(suggested_element_locator)
+        dropdown_sugesstion.click()
 
     def click_once_is_clickable(self, locator):
         """
@@ -167,15 +185,16 @@ class SeleniumExtended:
         element = self.find_element(locator)
         self.driver.execute_script("return arguments[0].click();", element)
 
-    def find_all_elements(self, locator):
+    def find_all_elements(self, locator, condition=EC.visibility_of_all_elements_located):
         """
           Find and return all elements matching the given locator.
 
+          :param condition:
           :param locator: Locator tuple for the elements
           :return: List of WebElement objects
           :raises TimeoutException: If no elements are visible within the specified timeout
           """
-        return self._wait().until(EC.visibility_of_all_elements_located(locator))
+        return self._wait().until(condition(locator))
 
     def get_text_from_multiple_elements(self, locator):
         """
@@ -210,6 +229,3 @@ class SeleniumExtended:
         """
         all_windows = self.driver.window_handles
         self.driver.switch_to.window(all_windows[new_window_index])
-
-
-
