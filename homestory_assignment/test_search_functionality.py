@@ -1,4 +1,3 @@
-import time
 import pytest
 import logging as logger
 
@@ -25,7 +24,7 @@ class TestSearchFunctionality:
         Ensure.is_equal(len(listing_items), expected_listing_items_number)
 
         for index, item in enumerate(listing_items):
-            Ensure.is_in("Houston, TX", item.text)  # making sure that every list item contains text "Houston, TX"
+            Ensure.is_in(location, item.text)  # making sure that every list item contains text "Houston, TX"
             logger.info(f"List item number {index + 1} contains expected text")
 
     @pytest.mark.tcid501
