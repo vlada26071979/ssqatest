@@ -31,17 +31,8 @@ def init_driver(request):
         user_data_dir = tempfile.mkdtemp()  # this was added to avoid 'Session not created' issue
         options.add_argument(f"--user-data-dir={user_data_dir}")
 
-    driver = None
-    for attempt in range(3):
-        try:
-            driver = webdriver.Chrome(options=options)
-            break
-        except SessionNotCreatedException as e:
-            print(f"[WARNING] Chrome couldn't start (attempt {attempt + 1}/3): {e}")
-
-    else:
-        raise RuntimeError("Chrome WebDriver could not start after 3 attempts")
-
+    # driver = webdriver.Chrome(options=options)
+    driver = webdriver.Firefox()
     if run_local:
         driver.maximize_window()
 

@@ -1,0 +1,19 @@
+{
+  "valid_user": {
+    "username": "standard_user",
+    "password": "secret_sauce"
+  },
+  "locked_out_user": {
+    "username": "locked_out_user",
+    "password": "secret_sauce"
+  },
+  "invalid_user": {
+    "username": "invalid_user",
+    "password": "test123"
+  },
+  "real_buyer": {
+    "first_name": "Vlada",
+    "last_name": "Djordjevic",
+    "postal_code": "11000"
+  }
+}

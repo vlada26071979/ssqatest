@@ -37,7 +37,7 @@ class SeleniumExtended:
         """
         self._wait().until(EC.visibility_of_element_located(locator)).send_keys(text)
 
-    def wait_and_click_key(self,locator,key):
+    def wait_and_click_key(self, locator, key):
         self._wait().until(EC.visibility_of_element_located(locator)).send_keys(key)
 
     def wait_and_click(self, locator):
