@@ -1,15 +1,9 @@
-import time
-
-from selenium.webdriver import Keys
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
 import logging as logger
 
 from ssqatest.src.SeleniumExtended import SeleniumExtended
 from selenium.webdriver.support.select import Select
-from ssqatest.src.helpers.assertions import Ensure
 from ssqatest.scopic_assignment.pages.locators.ProductsPageLocators import ProductsPageLocators
-from ssqatest.scopic_assignment.helpers.config_helpers import get_login_page_url
+
 
 
 class ProductsPage(ProductsPageLocators):
@@ -44,3 +38,10 @@ class ProductsPage(ProductsPageLocators):
     def click_cart(self):
         logger.info("Clicking cart..")
         self.sl.click_once_is_clickable(self.LINK_SHOPPING_CART)
+
+    def logout(self):
+        logger.info("Clicking burger button..")
+        self.sl.wait_and_click(self.BUTTON_BURGER_MENU)
+
+        logger.info("Clicking Logout")
+        self.sl.wait_and_click(self.LINK_LOGOUT)

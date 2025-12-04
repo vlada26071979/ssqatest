@@ -13,6 +13,7 @@ class TestCheckout:
 
     @pytest.mark.tcid303
     def test_verify_e2e_checkout(self):
+        # instantiating page objects
         login_page = LoginPage(self.driver)
         products_page = ProductsPage(self.driver)
         cart_page = CartPage(self.driver)

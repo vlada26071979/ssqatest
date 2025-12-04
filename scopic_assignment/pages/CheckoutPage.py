@@ -1,15 +1,7 @@
-import time
-
-from selenium.webdriver import Keys
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
 import logging as logger
 
 from ssqatest.src.SeleniumExtended import SeleniumExtended
-from selenium.webdriver.support.select import Select
-from ssqatest.src.helpers.assertions import Ensure
 from ssqatest.scopic_assignment.pages.locators.CheckoutPageLocators import CheckoutPageLocators
-from ssqatest.scopic_assignment.helpers.config_helpers import get_login_page_url
 
 
 class CheckoutPage(CheckoutPageLocators):

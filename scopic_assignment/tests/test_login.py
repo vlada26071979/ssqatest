@@ -3,6 +3,7 @@ import pytest
 from ssqatest.scopic_assignment.helpers.data_helpers import load_test_data
 from ssqatest.scopic_assignment.pages.LoginPage import LoginPage
 from ssqatest.scopic_assignment.pages.ProductsPage import ProductsPage
+from ssqatest.src.helpers.assertions import Ensure
 
 
 @pytest.mark.usefixtures("init_driver")
@@ -23,6 +24,10 @@ class TestLogin:
 
         # verify user is logged in
         products_page.verify_that_you_are_on_the_products_page()
+
+        # log out
+        products_page.logout()
+        login_page.verify_you_are_on_login_page()
 
     @pytest.mark.tcid301
     def test_verify_locked_out_user_cant_login(self):
@@ -55,4 +60,3 @@ class TestLogin:
 
         # Verify error message is displayed for user with invalid username and password
         login_page.verify_error_message_is_displayed(expected_error_message)
-

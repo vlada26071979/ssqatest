@@ -1,8 +1,3 @@
-import time
-
-from selenium.webdriver import Keys
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
 import logging as logger
 
 from ssqatest.src.SeleniumExtended import SeleniumExtended
@@ -36,4 +31,8 @@ class LoginPage(LoginPageLocators):
     def verify_error_message_is_displayed(self, expected_error_message):
         self.sl.wait_until_element_contains_text(self.ERROR_MESSAGE, expected_error_message)
         logger.info("Error message is displayed")
+
+    def verify_you_are_on_login_page(self):
+        self.sl.wait_until_element_contains_text(self.LOGIN_PASSWORD, "Password for all users:")
+        logger.info("You are on the login page!")
 

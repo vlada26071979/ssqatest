@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 
 
 class ProductsPageLocators:
+
     TITLE_PRODUCTS = (By.CSS_SELECTOR, "span[data-test='title']")
     PRODUCT_SORT_DROPDOWN = (By.CSS_SELECTOR, "[data-test='product-sort-container']")
 
@@ -10,3 +11,6 @@ class ProductsPageLocators:
 
     SHOPPING_CART = (By.CSS_SELECTOR, "[data-test='shopping-cart-badge']")
     LINK_SHOPPING_CART = (By.CSS_SELECTOR, "[data-test='shopping-cart-link']")
+
+    BUTTON_BURGER_MENU = (By.ID, "react-burger-menu-btn")
+    LINK_LOGOUT = (By.CSS_SELECTOR, "[data-test='logout-sidebar-link']")
